@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
 
-const HomePage = () => {
+const Home = () => {
   return (
     <div className="relative min-h-screen">
       {/* Video Hero Section */}
@@ -90,7 +90,7 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
 
 /* Add these animations to your CSS/Tailwind config */
 const styles = {
@@ -115,3 +115,4 @@ const styles = {
     }
   }
 };
+

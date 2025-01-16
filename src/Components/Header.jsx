@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, ShoppingCart, Heart, Menu, X, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom'; // No need to import Router, Route, Switch
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,21 +32,21 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500 text-white fixed w-full top-0 z-50 transition-all duration-500 shadow-lg">
+    <header className="bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 text-white fixed w-full top-0 z-50 transition-all duration-500 shadow-lg">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo with animation */}
           <div className="flex-shrink-0 transform hover:scale-105 transition-all duration-300">
-            <h1 className="text-2xl font-bold text-white hover:text-blue-100 transition-all duration-300">
+            <h1 className="text-2xl font-bold text-white hover:text-blue-200 transition-all duration-300">
               Furnify Meubles
             </h1>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-white hover:text-blue-100 transform hover:-translate-y-0.5 transition-all duration-300">
+            <Link to="/" className="text-white hover:text-blue-200 transform hover:-translate-y-0.5 transition-all duration-300">
               Home
-            </a>
+            </Link>
             <div
               className="relative"
               onMouseEnter={() => setIsProductDropdownOpen(true)}
@@ -54,9 +55,9 @@ const Header = () => {
                 setActiveCategory(null);
               }}
             >
-              <a href="/products" className="text-white hover:text-blue-100 transform hover:-translate-y-0.5 transition-all duration-300">
+              <Link to="/products" className="text-white hover:text-blue-200 transform hover:-translate-y-0.5 transition-all duration-300">
                 Products
-              </a>
+              </Link>
               {/* Main Product Dropdown with animation */}
               {isProductDropdownOpen && (
                 <div className="absolute top-full left-0 bg-white rounded-lg shadow-xl py-2 min-w-[200px] animate-fadeIn">
@@ -66,24 +67,24 @@ const Header = () => {
                       className="relative group"
                       onMouseEnter={() => setActiveCategory(category.name)}
                     >
-                      <a
-                        href={`/products/${category.name.toLowerCase().replace(' ', '-')}`}
+                      <Link
+                        to={`/products/${category.name.toLowerCase().replace(' ', '-')}`}
                         className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-500 transition-all duration-300 whitespace-nowrap group-hover:translate-x-1"
                       >
                         {category.name}
                         <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                      </a>
+                      </Link>
                       {/* Subcategories Dropdown with animation */}
                       {activeCategory === category.name && (
                         <div className="absolute top-0 left-full bg-white rounded-lg shadow-xl py-2 min-w-[200px] ml-1 animate-slideRight">
                           {category.subcategories.map((subcategory) => (
-                            <a
+                            <Link
                               key={subcategory}
-                              href={`/products/${category.name.toLowerCase().replace(' ', '-')}/${subcategory.toLowerCase().replace(' ', '-')}`}
+                              to={`/products/${category.name.toLowerCase().replace(' ', '-')}/${subcategory.toLowerCase().replace(' ', '-')}`}
                               className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-500 transition-all duration-300 hover:translate-x-1"
                             >
                               {subcategory}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       )}
@@ -92,33 +93,33 @@ const Header = () => {
                 </div>
               )}
             </div>
-            <a href="/contact" className="text-white hover:text-blue-100 transform hover:-translate-y-0.5 transition-all duration-300">
+            <Link to="/contact" className="text-white hover:text-blue-200 transform hover:-translate-y-0.5 transition-all duration-300">
               Contact
-            </a>
-            <a href="/blog" className="text-white hover:text-blue-100 transform hover:-translate-y-0.5 transition-all duration-300">
+            </Link>
+            <Link to="/blog" className="text-white hover:text-blue-200 transform hover:-translate-y-0.5 transition-all duration-300">
               Blog
-            </a>
+            </Link>
           </div>
 
           {/* Icons with hover animations */}
           <div className="flex items-center space-x-4">
             <button 
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="text-white hover:text-blue-100 transform hover:scale-110 transition-all duration-300"
+              className="text-white hover:text-blue-200 transform hover:scale-110 transition-all duration-300"
             >
               <Search className="w-6 h-6" />
             </button>
-            <button className="text-white hover:text-blue-100 transform hover:scale-110 transition-all duration-300">
+            <button className="text-white hover:text-blue-200 transform hover:scale-110 transition-all duration-300">
               <Heart className="w-6 h-6" />
             </button>
-            <button className="text-white hover:text-blue-100 transform hover:scale-110 transition-all duration-300">
+            <button className="text-white hover:text-blue-200 transform hover:scale-110 transition-all duration-300">
               <ShoppingCart className="w-6 h-6" />
             </button>
             {/* Mobile Menu Button with animation */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white hover:text-blue-100 transform hover:scale-110 transition-all duration-300 focus:outline-none"
+                className="text-white hover:text-blue-200 transform hover:scale-110 transition-all duration-300 focus:outline-none"
               >
                 {isMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -132,11 +133,11 @@ const Header = () => {
 
         {/* Mobile Menu with slide animation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-blue-400/95 animate-slideDown">
+          <div className="md:hidden bg-blue-600/95 animate-slideDown">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <a href="/" className="block px-3 py-2 rounded-md text-white hover:bg-blue-500/50 transition-all duration-300">
+              <Link to="/" className="block px-3 py-2 rounded-md text-white hover:bg-blue-500/50 transition-all duration-300">
                 Home
-              </a>
+              </Link>
               {/* Mobile Products Menu */}
               {productCategories.map((category) => (
                 <div key={category.name}>
@@ -145,32 +146,30 @@ const Header = () => {
                     className="w-full flex items-center justify-between px-3 py-2 rounded-md text-white hover:bg-blue-500/50 transition-all duration-300"
                   >
                     {category.name}
-                    <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${
-                      activeCategory === category.name ? 'rotate-90' : ''
-                    }`} />
+                    <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${activeCategory === category.name ? 'rotate-90' : ''}`} />
                   </button>
                   {/* Mobile Subcategories with slide animation */}
                   {activeCategory === category.name && (
                     <div className="ml-4 space-y-1 animate-slideDown">
                       {category.subcategories.map((subcategory) => (
-                        <a
+                        <Link
                           key={subcategory}
-                          href={`/products/${category.name.toLowerCase().replace(' ', '-')}/${subcategory.toLowerCase().replace(' ', '-')}`}
+                          to={`/products/${category.name.toLowerCase().replace(' ', '-')}/${subcategory.toLowerCase().replace(' ', '-')}`}
                           className="block px-3 py-2 rounded-md text-white hover:bg-blue-500/50 transition-all duration-300"
                         >
                           {subcategory}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   )}
                 </div>
               ))}
-              <a href="/contact" className="block px-3 py-2 rounded-md text-white hover:bg-blue-500/50 transition-all duration-300">
+              <Link to="/contact" className="block px-3 py-2 rounded-md text-white hover:bg-blue-500/50 transition-all duration-300">
                 Contact
-              </a>
-              <a href="/blog" className="block px-3 py-2 rounded-md text-white hover:bg-blue-500/50 transition-all duration-300">
+              </Link>
+              <Link to="/blog" className="block px-3 py-2 rounded-md text-white hover:bg-blue-500/50 transition-all duration-300">
                 Blog
-              </a>
+              </Link>
             </div>
           </div>
         )}
@@ -201,40 +200,3 @@ const Header = () => {
 };
 
 export default Header;
-
-/* Add these animation keyframes to your CSS/Tailwind config */
-const style = {
-  '.animate-fadeIn': {
-    animation: 'fadeIn 0.3s ease-in-out'
-  },
-  '.animate-slideDown': {
-    animation: 'slideDown 0.3s ease-in-out'
-  },
-  '.animate-slideRight': {
-    animation: 'slideRight 0.3s ease-in-out'
-  },
-  '@keyframes fadeIn': {
-    '0%': { opacity: '0' },
-    '100%': { opacity: '1' }
-  },
-  '@keyframes slideDown': {
-    '0%': { 
-      opacity: '0',
-      transform: 'translateY(-10px)'
-    },
-    '100%': {
-      opacity: '1',
-      transform: 'translateY(0)'
-    }
-  },
-  '@keyframes slideRight': {
-    '0%': {
-      opacity: '0',
-      transform: 'translateX(-10px)'
-    },
-    '100%': {
-      opacity: '1',
-      transform: 'translateX(0)'
-    }
-  }
-}
