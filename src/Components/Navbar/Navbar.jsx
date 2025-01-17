@@ -1,11 +1,14 @@
 import React from 'react'
-import Header from './Components/Header'
-import Footer from './Components/Footer'
+import Header from '../Header'
+import Footer from '../Footer'
 
-function Nav({ children }) {
+          
+function Navbar({ children }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Header/>
+      <Header  
+   
+      />
       <main style={{ flex: '1 0 auto' }}>
         {children}
       </main>
@@ -14,4 +17,4 @@ function Nav({ children }) {
   )
 }
 
-export default Nav
+export default Navbar;

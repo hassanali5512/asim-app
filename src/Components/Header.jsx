@@ -1,37 +1,16 @@
 import React, { useState } from 'react';
 import { Search, ShoppingCart, Heart, Menu, X, ChevronRight } from 'lucide-react';
-import { Link } from 'react-router-dom'; // No need to import Router, Route, Switch
-
+import { Link, Outlet } from 'react-router-dom'; // No need to import Router, Route, Switch
+import categories from './data/category';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProductDropdownOpen, setIsProductDropdownOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
 
-  const productCategories = [
-    {
-      name: 'Living Room',
-      subcategories: ['Sofas', 'Coffee Tables', 'TV Units', 'Bookshelves', 'Recliners']
-    },
-    {
-      name: 'Bedroom',
-      subcategories: ['Beds', 'Wardrobes', 'Mattresses', 'Side Tables', 'Dressing Tables']
-    },
-    {
-      name: 'Dining Room',
-      subcategories: ['Dining Tables', 'Dining Chairs', 'Buffet Units', 'Bar Cabinets']
-    },
-    {
-      name: 'Office',
-      subcategories: ['Desks', 'Office Chairs', 'Filing Cabinets', 'Bookcases']
-    },
-    {
-      name: 'Kitchen',
-      subcategories: ['Kitchen Cabinets', 'Kitchen Islands', 'Bar Stools', 'Storage']
-    }
-  ];
 
   return (
+  <>
     <header className="bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 text-white fixed w-full top-0 z-50 transition-all duration-500 shadow-lg">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -61,7 +40,7 @@ const Header = () => {
               {/* Main Product Dropdown with animation */}
               {isProductDropdownOpen && (
                 <div className="absolute top-full left-0 bg-white rounded-lg shadow-xl py-2 min-w-[200px] animate-fadeIn">
-                  {productCategories.map((category) => (
+                  {categories.map((category) => (
                     <div
                       key={category.name}
                       className="relative group"
@@ -139,7 +118,7 @@ const Header = () => {
                 Home
               </Link>
               {/* Mobile Products Menu */}
-              {productCategories.map((category) => (
+              {categories.map((category) => (
                 <div key={category.name}>
                   <button
                     onClick={() => setActiveCategory(activeCategory === category.name ? null : category.name)}
@@ -196,6 +175,9 @@ const Header = () => {
         )}
       </nav>
     </header>
+    <Outlet/>
+  </>
+
   );
 };
 

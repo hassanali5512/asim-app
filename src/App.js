@@ -1,26 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter , Route, Routes } from 'react-router-dom';
 
 import Home from './Components/Home';
-import Products from './Components/Products';
+import Products from './Components/AllProducts/Product';
 import Contact from './Components/Contact';
-import Nav from './Nav';
-import Crousel from './Components/Crousel';
 import Blog from './Components/Blog';
+import Navbar from './Components/Navbar/Navbar';
 
 function App() {
   return (
-    <Router>
-      <Nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Navbar />} >
+          <Route index element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/crousel" element={<Crousel/>} />
-          <Route path="/blog" element={<Blog/>} />
-        </Routes>
-      </Nav>
-    </Router>
+          <Route path="/blog" element={<Blog />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

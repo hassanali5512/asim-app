@@ -1,8 +1,10 @@
 import React from 'react';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
+import Crousel from './CrousalHomePage/Crousal';
 
 const Home = () => {
   return (
+    <>
     <div className="relative min-h-screen">
       {/* Video Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
@@ -87,32 +89,11 @@ const Home = () => {
   </div>
 </section>
     </div>
+    <Crousel/>
+    </>
+
   );
 };
 
 export default Home;
-
-/* Add these animations to your CSS/Tailwind config */
-const styles = {
-  '.animate-fadeIn': {
-    animation: 'fadeIn 1s ease-out'
-  },
-  '.animate-slideUp': {
-    animation: 'slideUp 1s ease-out'
-  },
-  '@keyframes fadeIn': {
-    '0%': { opacity: '0' },
-    '100%': { opacity: '1' }
-  },
-  '@keyframes slideUp': {
-    '0%': { 
-      opacity: '0',
-      transform: 'translateY(20px)'
-    },
-    '100%': {
-      opacity: '1',
-      transform: 'translateY(0)'
-    }
-  }
-};
 
