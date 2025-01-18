@@ -27,14 +27,7 @@ const Crousel = () => {
       image: "/2.jpg",
       isLiked: true
     },
-    { 
-      id: 4, 
-      name: "Dining Table Set with Six Chairs", 
-      oldPrice: "$999", 
-      price: "$799", 
-      image: "/2.jpg",
-      isLiked: true
-    },
+    
     { 
       id: 5, 
       name: "Dining Table Set with Six Chairs", 
@@ -59,14 +52,7 @@ const Crousel = () => {
       image: "/2.jpg",
       isLiked: false
     },
-    { 
-      id: 8, 
-      name: "Office Chair", 
-      oldPrice: "$399", 
-      price: "$299", 
-      image: "/2.jpg",
-      isLiked: false
-    },
+   
     { 
       id: 9, 
       name: "Coffee Table", 
@@ -115,7 +101,7 @@ const Crousel = () => {
     handleResize(); // Initial check
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [products.length]);
 
   const toggleLike = (productId) => {
     setLikedProducts(prev => ({
